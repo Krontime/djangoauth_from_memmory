@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+                    <a href="compose_message" class="btn btn-danger btn-sm btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Compose</a>
+                    <hr>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="{% url 'inbox' %}"><span class="badge pull-right">{{ user.messages_received.all|length }}</span> Inbox </a>
+                        </li>
+                        <li><a href="{% url 'sent' %}">Sent Mail</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-9 col-md-10">
+            <h3><span style="color:lightgrey">From: </span>{{ mail.sender.username }}</h3>
+            <p><span style="color:lightgrey">Subject: </span>{{ mail.subject }}</p>
+            <hr>
+            <p style="color:lightgrey">Message:</p>
+            <p>{{ mail.body }}</p>
+            <p>{{ mail.date }}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
