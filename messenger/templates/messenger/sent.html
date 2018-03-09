@@ -15,9 +15,9 @@
             <a href="compose_message" class="btn btn-danger btn-sm btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Compose</a>
             <hr>
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="{% url 'inbox' %}"><span class="badge pull-right">{{ user.messages_received.all|length }}</span> Inbox </a>
+                <li><a href="{% url 'inbox' %}"><span class="badge pull-right">{{ unread_mail }}</span> Inbox </a>
                 </li>
-                <li><a href="{% url 'sent' %}">Sent Mail</a></li>
+                <li class="active"><a href="{% url 'sent' %}">Sent Mail</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-md-10">
@@ -25,7 +25,7 @@
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
                         
-                        {% for message in user.messages_received.all %}
+                        {% for message in user.messages_sent.all %}
                         <a href="{% url 'view_message' message.id %}" class="list-group-item">
                             <span class="glyphicon glyphicon-star-empty"></span><span class="name" style="min-width: 120px;
                                 display: inline-block;">{{ message.sender.username }}</span> <span class="">{{ message.subject }}</span>
@@ -34,7 +34,6 @@
                                 
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

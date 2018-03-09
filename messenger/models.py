@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Message(models.Model):
     subject = models.CharField(max_length=50, blank=False)
-    body = models.TextField(max_length=200, blank=False)
+    body = models.CharField(max_length=200, blank=False)
     sender = models.ForeignKey('auth.User', blank=False, related_name="messages_sent")
     recipient = models.ForeignKey('auth.User', blank=False, related_name="messages_received")
     read = models.BooleanField(default=False, blank=False)
@@ -11,3 +11,4 @@ class Message(models.Model):
     
     def __str__(self):
         return self.subject
+        

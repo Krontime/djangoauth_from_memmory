@@ -16,11 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from home.views import get_home_index
-from messanger.views import *
+from messenger.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', get_home_index, name='home'),
     url(r'^accounts/', include('accounts.urls')),
-    url(r'^messanger/', include('messanger.urls')),
+    url(r'^messenger/', include('messenger.urls')),
 ]

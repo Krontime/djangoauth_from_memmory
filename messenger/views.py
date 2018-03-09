@@ -1,21 +1,22 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from messanger.models import Message
-from messanger.forms import ComposeMessageForm
+from messenger.models import Message
+from messenger.forms import ComposeMessageForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def get_inbox_index(request):
-    return render(request, "messanger/inbox.html")
+    return render(request, "messenger/inbox.html")
 
 @login_required
 def get_sent_index(request):
-    return render(request, "messanger/sent.html")
+    return render(request, "messenger/sent.html")
 
 @login_required
 def get_mail_index(request, id):
-    item = get_object_or_404(Message, pk=id)
-    
-    return render(request, "messanger/mail.html", {'mail': item})
+    message = get_object_or_404(Message, pk=id)
+    message.read=True
+    message.save()
+    return render(request, "messenger/mail.html", {'message': message})
 
 @login_required
 def get_compose_index(request):
@@ -30,4 +31,4 @@ def get_compose_index(request):
         form = ComposeMessageForm()
     
     
-    return render(request, "messanger/compose.html", {'form': form})
+    return render(request, "messenger/compose.html", {'form': form})
