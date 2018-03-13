@@ -26,7 +26,8 @@ SECRET_KEY = 'im5b=@6#i9jl-=7d$tt1k#@o6nc0l2kh4yfsfxb&w^_gbr7w2v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["djangoauth-from-memory-krontime.c9users.io"]
+ALLOWED_HOSTS = ["djangoauth-from-memory-krontime.c9users.io",
+                "django-messaging-app.herokuapp.com"]
 
 
 # Application definition
