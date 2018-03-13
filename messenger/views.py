@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from messenger.models import Message
 from messenger.forms import ComposeMessageForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 def get_inbox_index(request):
@@ -32,3 +33,4 @@ def get_compose_index(request):
     
     
     return render(request, "messenger/compose.html", {'form': form})
+

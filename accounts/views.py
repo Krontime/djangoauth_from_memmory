@@ -15,11 +15,6 @@ def login(request):
             user = auth.authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
             if user is not None:
                 auth.login(request, user)
-                # if request.GET and 'next' in request.GET:
-                # 	next = request.GET['next']
-                # 	return redirect(next)
-                # else:
-                # 	return redirect('home')
                 return redirect("home")
             else:
                 form.add_error(None, "Your username or password was not recognised")
